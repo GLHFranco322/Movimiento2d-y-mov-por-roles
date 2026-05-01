@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cltbeb0yfavuu"
+path="res://.godot/imported/04-the-grimm-troupe-hollow-knight-gods-nightmares-128-ytshorts.savetube.me.mp3.crdownload.mp3-1531ecd60c72453057e872140b5469df.mp3str"
+
+[deps]
+
+source_file="res://Sprites Mario Bros. 3 Vídeo/04-the-grimm-troupe-hollow-knight-gods-nightmares-128-ytshorts.savetube.me.mp3.crdownload.mp3"
+dest_files=["res://.godot/imported/04-the-grimm-troupe-hollow-knight-gods-nightmares-128-ytshorts.savetube.me.mp3.crdownload.mp3-1531ecd60c72453057e872140b5469df.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

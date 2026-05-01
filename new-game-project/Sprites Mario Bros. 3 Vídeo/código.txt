@@ -1,0 +1,63 @@
+extends CharacterBody2D
+
+var speed = 25000
+var charge = 0
+@onready var anim = $AnimatedSprite2D
+var gravedad = 0
+var can_jump = true
+var timerOn = false
+
+func _physics_process(delta):
+	var direction = Input.get_axis("left", "right")
+	
+	if Input.is_action_pressed("run"):
+		if direction != 0 and charge < 110:
+			charge += 1
+			anim.play("run")
+	else:
+		if direction != 0:
+			if charge > 0:
+				charge -= 2
+			anim.play("walk")
+	
+	if direction == 0:
+		if charge > 0:
+			charge -= 5
+		anim.play("idle")
+	
+	
+	if direction != 0:
+		if direction > 0:
+			anim.flip_h = false
+		if direction < 0:
+			anim.flip_h = true
+	
+	velocity.x = direction * (speed + (charge * 250)) * delta
+	
+	move_and_slide()
+	
+	$ProgressBar.value = charge
+	
+	
+	if is_on_floor():
+		can_jump = true
+	else:
+		gravedad -= 25
+	
+	if Input.is_action_pressed("jump") and can_jump:
+		if timerOn == false:
+			timerOn = true
+			$Timer.start()
+		gravedad = 600
+		anim.play("jump")
+	
+	if Input.is_action_just_released("jump"):
+		can_jump = false
+	
+	velocity.y = -gravedad
+	
+
+
+func _on_timer_timeout():
+	can_jump = false
+	timerOn = false
