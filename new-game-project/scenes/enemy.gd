@@ -16,18 +16,18 @@ func _physics_process(delta: float) -> void:
 
 	var speed_actual = speed_normal
 	
-	# 🔴 SI VE AL JUGADOR → MÁS VELOCIDAD
+	#si ve al jugador corre
 	if ve_al_jugador():
 		speed_actual = speed_alerta
 	
-	# 🔁 CAMBIO DE DIRECCIÓN AL CHOCAR
+	# cambia de direccion al chocas
 	if is_on_wall():
 		if !$AnimatedSprite2D.flip_h:
 			velocity.x = speed_actual
 		else:
 			velocity.x = -speed_actual
 	
-	# 👉 ASEGURA QUE SIEMPRE SE MUEVA
+	#asegura que se mueva todo el tiempo
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = false
 		velocity.x = -speed_actual
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
+#ve al jugador para ir a matarlo
 func ve_al_jugador():
 	if ray_der.is_colliding():
 		var obj = ray_der.get_collider()
