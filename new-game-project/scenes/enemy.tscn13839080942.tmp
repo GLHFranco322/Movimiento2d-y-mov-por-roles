@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cohiqpndtgam"]
+
+[ext_resource type="Texture2D" uid="uid://bdgtq0qcna7eq" path="res://Sprites Mario Bros. 3 Vídeo/NES - Super Mario Bros. - Enemies & Bosses - Enemies & Bosses.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://8uggrb8x7lab" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p1mj"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(36, 24, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(18, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5uy6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p1mj")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md0e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ra3w")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
+size = Vector2(16, 16)
+
+[node name="enemy" type="CharacterBody2D" unique_id=1147283132]
+scale = Vector2(3, 3)
+script = ExtResource("1_md0e3")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=704167523]
+sprite_frames = SubResource("SpriteFrames_5uy6h")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=555772883]
+shape = SubResource("RectangleShape2D_c4w8v")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1816658992]
+
+[node name="RayCast2D" type="RayCast2D" parent="Node2D" unique_id=108142695]
+target_position = Vector2(60, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Node2D" unique_id=895479464]
+target_position = Vector2(-60, 0)
